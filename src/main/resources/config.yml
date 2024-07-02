@@ -1,0 +1,10 @@
+welcome-reward:
+  item: "GOLD_NUGGET"
+  amount: 5
+  timer: 10
+  sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  message: "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Thanks for welcoming a new player, you've received <yellow>5 gold nuggets</yellow> as a gift!"
+
+messages:
+  new-join-message: "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome to the server for the first time, <player>!"
+  join-message: "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome back, <player>!"
