@@ -1,5 +1,6 @@
 package net.worldmc.merovingian.listeners;
 
+import net.worldmc.merovingian.Merovingian;
 import net.worldmc.merovingian.managers.DeathInventoryManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,11 +8,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class PlayerDeathListener implements Listener {
-
     private final DeathInventoryManager deathInventoryManager;
 
-    public PlayerDeathListener(DeathInventoryManager deathInventoryManager) {
-        this.deathInventoryManager = deathInventoryManager;
+    public PlayerDeathListener(Merovingian plugin) {
+        this.deathInventoryManager = new DeathInventoryManager();
     }
 
     @EventHandler

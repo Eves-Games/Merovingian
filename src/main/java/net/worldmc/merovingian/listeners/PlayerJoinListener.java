@@ -14,24 +14,21 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
     private final WelcomeRewardManager welcomeRewardManager;
-    private final Merovingian plugin;
 
-    public PlayerJoinListener(WelcomeRewardManager welcomeRewardManager, Merovingian plugin) {
-        this.welcomeRewardManager = welcomeRewardManager;
-        this.plugin = plugin;
+    public PlayerJoinListener(Merovingian plugin) {
+        this.welcomeRewardManager = new WelcomeRewardManager(plugin);
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-
         event.joinMessage(null);
 
+        Player player = event.getPlayer();
         TagResolver playerNamePlaceholder = Placeholder.component("player", Component.text(player.getName()));
 
         if (!player.hasPlayedBefore()) {
             Component newJoinMessage = MiniMessage.miniMessage().deserialize(
-                    plugin.getConfig().getString("messages.new-join-message", "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome to the server for the first time, <player>!"),
+                    Merovingian.getInstance().getConfig().getString("messages.new-join-message", "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome to the server for the first time, <player>!"),
                     playerNamePlaceholder
             );
             Bukkit.getServer().sendMessage(newJoinMessage);
@@ -39,7 +36,7 @@ public class PlayerJoinListener implements Listener {
             welcomeRewardManager.startWelcomeRewardPeriod(player);
         } else {
             Component joinMessage = MiniMessage.miniMessage().deserialize(
-                    plugin.getConfig().getString("messages.join-message", "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome back, <player>!"),
+                    Merovingian.getInstance().getConfig().getString("messages.join-message", "<gray>[<b><gradient:#00AA00:#FFAA00>WorldMC</gradient></b>] <green>Welcome back, <player>!"),
                     playerNamePlaceholder
             );
             Bukkit.getServer().sendMessage(joinMessage);
