@@ -1,3 +1,8 @@
+database:
+  jdbc-url: "jdbc:mysql://node.worldmc.net:3306/s1_merovingian"
+  username: "your_username"
+  password: "your_password"
+
 welcome-reward:
   item: "GOLD_NUGGET"
   amount: 5
